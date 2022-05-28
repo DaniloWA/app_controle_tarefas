@@ -7,6 +7,7 @@ O Corpo da mensagem.
 Texto do botão
 @endcomponent
 
+
 Obrigado,<br>
 {{ config('app.name') }}
 @endcomponent
