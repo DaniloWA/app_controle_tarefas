@@ -69,7 +69,7 @@ class VerificarEmailNotification extends Notification
      */
     protected function buildMailMessage($url)
     {
-        $url = "";
+         
         return (new MailMessage)
             ->subject(Lang::get('Confirmação de e-mail'))
             ->greeting('Olá '.$this->name)
