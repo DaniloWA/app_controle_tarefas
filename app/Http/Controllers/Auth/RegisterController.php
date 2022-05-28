@@ -22,7 +22,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers; //trait funciona como um control-c control-v funciona como um (include)
 
     /**
      * Where to redirect users after registration.
