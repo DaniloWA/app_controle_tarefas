@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TarefaController extends Controller
 {
+     /*
+     validação em todos os metodos 
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
+    
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,38 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        echo 'Chegamos';
+
+        $id = auth()->user()->id;
+        $name = auth()->user()->name;
+        $email = auth()->user()->email;
+
+        return "ID $id | Nome: $name | Email: $email";
+
+        // retorna true pra verificado e false pra não
+        /*
+        if(auth()->check()) {
+            $id = auth()->user()->id;
+            $name = auth()->user()->name;
+            $email = auth()->user()->email;
+
+            return "ID $id | Nome: $name | Email: $email";
+
+        } else {
+            return 'Voce não está logado no sistema!';
+        };
+        
+        
+        if(Auth::check()) {
+            $id = Auth::user()->id;
+            $name = Auth::user()->name;
+            $email = Auth::user()->email;
+
+            return "ID $id | Nome: $name | Email: $email";
+
+        } else {
+            return 'Voce não está logado no sistema!';
+        };
+        */
     }
 
     /**
