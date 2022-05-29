@@ -26,13 +26,10 @@ class TarefaController extends Controller
      */
     public function index()
     {
+        $user_id = auth()->user()->id;
+        $tarefas = Tarefa::where('user_id', $user_id)->get();
 
-        $id = auth()->user()->id;
-        $name = auth()->user()->name;
-        $email = auth()->user()->email;
-
-        return "ID $id | Nome: $name | Email: $email";
-
+        return view('tarefa.index', ['tarefas' => $tarefas]);
         // retorna true pra verificado e false pra não
         /*
         if(auth()->check()) {
@@ -84,7 +81,7 @@ class TarefaController extends Controller
        
 
         $tarefa = Tarefa::create($dados);
-        
+
         $destinatario = auth()->user()->email;      //e-mail do usuario logado, autenticado
         Mail::to($destinatario)->send(new NovaTarefaMail($tarefa));
 
