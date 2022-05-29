@@ -42,6 +42,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function tarefas() {
+        //hasMany (tem muitos)
+        return $this->hasMany('App\Models\Tarefa');
+    }
 
     // intercepitando o fluxo padrão 
     public function sendPasswordResetNotification($token) // Esse metódo já existe e está sendo herdado de Authenticatable o qual será subistituido por esse 
@@ -54,9 +58,6 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new VerificarEmailNotification($this->name));
     }
 
-    public function tarefas() {
-        //hasMany (tem muitos)
-        return $this->hasMany('App\Models\Tarefa');
-    }
+
     
 }
